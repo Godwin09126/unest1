@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Supabase Test</title>
+</head>
+<body>
+
+    <h1>UNEST MARKET</h1>
+    <p id="status">Testing connection...</p>
+
+    <script type="module">
+        import { supabase } from "./js/supabase.js";
+
+        const status = document.getElementById("status");
+
+        const { error } = await supabase.auth.getSession();
+
+        if (error) {
+            status.textContent = "Connection test failed: " + error.message;
+        } else {
+            status.textContent = "Supabase connection successful!";
+        }
+    </script>
+
+</body>
+</html>
